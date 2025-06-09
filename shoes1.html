@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shoes - Sports, Casual & Formal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+      color: #333;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #1e3d59;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 6px;
+    }
+
+    .category {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #f4f4f4;
+    }
+
+    .card-content {
+      padding: 1.2rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .sizes {
+      margin-top: 0.75rem;
+    }
+
+    .size-badge {
+      display: inline-block;
+      background: #00bcd4;
+      color: #fff;
+      padding: 4px 10px;
+      margin: 4px 4px 0 0;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .size-badge:hover {
+      background: #0097a7;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .card-content h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<script>
+  function addToCart(itemName) {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(itemName);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`Added to cart: ${itemName}`);
+  }
+</script>
+
+<body>
+  
+  <header>
+    <h1>Shoes</h1>
+    <p>Find your perfect fit – explore sports, casual, and formal shoes.</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>🏃 Sports Shoes</h2>
+      <div class="category">
+        <div class="card">
+          <img src="images/sports1.jpg" alt="Running Shoes" />
+          <div class="card-content">
+            <h3>Running Shoes</h3>
+            <p>Lightweight, breathable and flexible. Ideal for long-distance running and training.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Running Shoes')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/sports2.jpg" alt="Training Shoes" />
+          <div class="card-content">
+            <h3>Training Shoes</h3>
+            <p>Multi-purpose shoes for gym workouts, HIIT, and indoor sports. Soft sole with ankle support.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Training Shoes')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>👟 Casual Shoes</h2>
+      <div class="category">
+        <div class="card">
+          <img src="images/casual1.jpg" alt="Canvas Sneakers" />
+          <div class="card-content">
+            <h3>Canvas Sneakers</h3>
+            <p>Classic low-top sneaker with vulcanized rubber sole. Great for everyday outfits and comfort.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Canvas Sneakers')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/casual2.jpg" alt="Slip-on Loafers" />
+          <div class="card-content">
+            <h3>Slip-on Loafers</h3>
+            <p>Effortless style and comfort. Cushioned insole and breathable lining for all-day wear.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Slip-on Loafers')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🥿 Formal Shoes</h2>
+      <div class="category">
+        <div class="card">
+          <img src="images/formal1.jpg" alt="Oxford Shoes" />
+          <div class="card-content">
+            <h3>Oxford Shoes</h3>
+            <p>Polished finish and closed lacing. The ultimate dress shoe for meetings, office or ceremonies.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Oxford Shoes')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/formal2.jpg" alt="Derby Shoes" />
+          <div class="card-content">
+            <h3>Derby Shoes</h3>
+            <p>Open-lacing leather shoes with a rounded toe. Formal yet flexible enough for smart-casual looks.</p>
+            <div class="sizes">
+              <span class="size-badge">6</span>
+              <span class="size-badge">7</span>
+              <span class="size-badge">8</span>
+              <span class="size-badge">9</span>
+              <span class="size-badge">10</span>
+              <button onclick="addToCart('Derby Shoes')"
+                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
+                to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
