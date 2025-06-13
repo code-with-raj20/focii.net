@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shoes - Sports, Casual & Formal</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -18,6 +20,26 @@
       background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
       color: #333;
       padding-bottom: 50px;
+    }
+
+    /* Navigation */
+    .cart-icon {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    #cartBadge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      transition: scale 0.2s ease;
     }
 
     header {
@@ -126,17 +148,42 @@
     }
   </style>
 </head>
-<script>
-  function addToCart(itemName) {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(itemName);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`Added to cart: ${itemName}`);
-  }
-</script>
 
 <body>
-  
+
+  <!-- ✅ Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative mb-2">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-3" href="#"><img src="images/logo.jpg" alt="Logo" style="height: 3.5rem;" /></a>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="shoes1.html">Shoes</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="sportswear1.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="sale.html">Sale</a></li>
+        </ul>
+      </div>
+
+      <!-- Cart -->
+      <div class="dropdown me-4" style="position: absolute; top: 10px; right: 0; text-align: center;">
+        <button id="cartToggle" class="btn p-0 border-0 bg-transparent dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false" style="position: relative;">
+          <img src="images/cart-icon.jpg" alt="Cart" id="cartIcon" class="cart-icon" />
+          <span id="cartBadge">0</span>
+        </button>
+        <div id="cartTotal" style="font-size: 0.8rem; color: #212529; margin-top: 4px; font-weight: 500;">₹0</div>
+        <ul class="dropdown-menu dropdown-menu-end p-3" id="cartItems" style="min-width: 270px;">
+          <li><em>Your cart is empty.</em></li>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+            <strong id="dropdownTotal" style="font-size: 0.9rem;">₹0</strong>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <header>
     <h1>Shoes</h1>
     <p>Find your perfect fit – explore sports, casual, and formal shoes.</p>
@@ -266,8 +313,79 @@
         </div>
       </div>
     </section>
-
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const priceMap = {
+      "Running Shoes": 1200,
+      "Training Shoes": 1100,
+      "Canvas Sneakers": 900,
+      "Slip-on Loafers": 950,
+      "Oxford Shoes": 1400,
+      "Derby Shoes": 1350
+    };
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cartItems = document.getElementById("cartItems");
+      const cartBadge = document.getElementById("cartBadge");
+      const cartTotal = document.getElementById("cartTotal");
+      const dropdownTotal = document.getElementById("dropdownTotal");
+
+      let total = 0;
+      const counts = {};
+      cart.forEach(item => {
+        counts[item] = (counts[item] || 0) + 1;
+        total += priceMap[item] || 0;
+      });
+
+      cartBadge.textContent = cart.length;
+      cartTotal.textContent = `₹${total}`;
+      dropdownTotal.textContent = `₹${total}`;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<li><em>Your cart is empty.</em></li>";
+        dropdownTotal.textContent = "₹0";
+        return;
+      }
+
+      const itemList = Object.entries(counts).map(([name, qty]) => `<li>${name} x${qty}</li>`).join("");
+      const dropdownButtons = `
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+        <strong id="dropdownTotal" style="font-size: 0.9rem;">₹${total}</strong>
+      </div>
+    `;
+      cartItems.innerHTML = itemList + dropdownButtons;
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      const badge = document.getElementById("cartBadge");
+      badge.style.transform = "scale(1.4)";
+      setTimeout(() => {
+        badge.style.transform = "scale(1)";
+      }, 150);
+
+      renderCart();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const icon = document.getElementById("cartIcon");
+      icon.addEventListener("mouseenter", () => icon.style.transform = "scale(1.15)");
+      icon.addEventListener("mouseleave", () => icon.style.transform = "scale(1)");
+      renderCart();
+    });
+  </script>
+
 </body>
 
 </html>
