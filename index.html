@@ -433,31 +433,15 @@
 <body>
 
   <section data-bs-version="5.1" class="menu menu2 cid-uMFvpF97iz" once="menu" id="menu-5-uMFvpF97iz">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
+      <div class="container-fluid">
 
+        <a class="navbar-brand ms-3" href="#">
+          <img src="images/logo.jpg" alt="Logo" style="height: 3.7rem;">
+        </a>
 
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-      <div class="container">
-        <div class="navbar-brand">
-          <span class="navbar-logo">
-            <p>
-              <img src="images/logo.jpg"
-                alt="Mobirise Website Builder" style="height: 3.7rem;">
-            </p>
-          </span>
-
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
-          data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link link text-black display-4" href="shoes1.html">Shoes</a>
             </li>
@@ -468,18 +452,42 @@
               <a class="nav-link link text-black display-4" href="sale.html">Sale</a>
             </li>
           </ul>
-
-
-
         </div>
-      </div>
+
+        <!-- Cart icon at top right with badge, price, and dropdown -->
+        <div style="position: absolute; top: 10px; right: 20px; text-align: center;">
+          <a href="#" id="cartToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            style="position: relative; display: inline-block;">
+            <img src="images/cart-icon.jpg" alt="Cart" id="cartIcon"
+              style="width: 40px; height: 40px; transition: transform 0.3s ease;">
+            <span id="cartBadge" style="
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: scale 0.2s ease;
+                  ">0</span>
+          </a>
+          <div id="cartTotal" style="font-size: 0.8rem; color: #212529; margin-top: 4px; font-weight: 500;">₹0</div>
+
+          <ul class="dropdown-menu dropdown-menu-end p-3" id="cartItems" style="min-width: 270px;">
+            <li><em>Your cart is empty.</em></li>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+              <strong id="dropdownTotal" style="font-size: 0.9rem;">₹0</strong>
+            </div>
+          </ul>
+        </div>
     </nav>
+
   </section>
 
   <section data-bs-version="5.1" class="image3 cid-uMFDVdt61g" id="image03-5">
-
-
-
 
 
     <div class="container">
@@ -785,8 +793,69 @@
   <script src="https://r.mobirisesite.com/1535759/assets/dropdown/js/navbar-dropdown.js?rnd=1748617766185"></script>
   <script src="https://r.mobirisesite.com/1535759/assets/theme/js/script.js?rnd=1748617766185"></script>
 
+  <script>
+    const priceMap = {
+      "Adidas Originals Samba Black": 4200,
+      "Nike Barcelona 24/25 Spotify Kit": 860,
+      "Adidas Germany Away Kit 2024": 860
+      // Add more items and prices here if needed
+    };
 
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cartItems = document.getElementById("cartItems");
+      const cartBadge = document.getElementById("cartBadge");
+      const cartTotal = document.getElementById("cartTotal");
+      const dropdownTotal = document.getElementById("dropdownTotal");
 
+      let total = 0;
+      const counts = {};
+      cart.forEach(item => {
+        counts[item] = (counts[item] || 0) + 1;
+        total += priceMap[item] || 0;
+      });
+
+      cartBadge.textContent = cart.length;
+      cartTotal.textContent = `₹${total}`;
+      dropdownTotal.textContent = `₹${total}`;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<li><em>Your cart is empty.</em></li>";
+        dropdownTotal.textContent = "₹0";
+        return;
+      }
+
+      const itemList = Object.entries(counts).map(([name, qty]) => `<li>${name} x${qty}</li>`).join("");
+      const dropdownButtons = `
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+        <strong id="dropdownTotal" style="font-size: 0.9rem;">₹${total}</strong>
+      </div>
+    `;
+      cartItems.innerHTML = itemList + dropdownButtons;
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Animate badge
+      const badge = document.getElementById("cartBadge");
+      badge.style.transform = "scale(1.4)";
+      setTimeout(() => {
+        badge.style.transform = "scale(1)";
+      }, 150);
+
+      renderCart();
+    }
+      renderCart();
+  </script>
 </body>
 
 </html>
