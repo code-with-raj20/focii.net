@@ -368,6 +368,7 @@
       let cart = JSON.parse(localStorage.getItem("cart") || "[]");
       cart.push(itemName);
       localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`Added to cart: ${itemName}`);
 
       const badge = document.getElementById("cartBadge");
       badge.style.transform = "scale(1.4)";
