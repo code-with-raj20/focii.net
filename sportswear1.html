@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sportswear - Shop IPL, Football & Basketball Jerseys</title>
+  <title>Sportswear - Jerseys & Apparel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    /* Reset & base */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,291 +16,288 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffffff 0%, #eceef5 100%);
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
+      color: #333;
     }
 
     header {
-      background: #000000;
-      color: #ecf0f1;
-      padding: 2rem 1rem;
+      background: #2c3e50;
+      color: #fff;
+      padding: 2.5rem 1rem;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     header h1 {
-      font-weight: 600;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.3rem;
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
     }
 
     header p {
-      font-weight: 400;
-      font-size: 1.15rem;
-      opacity: 0.85;
-      max-width: 600px;
-      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
 
-    main {
-      flex-grow: 1;
-      max-width: 1200px;
-      margin: 2rem auto 4rem;
-      padding: 0 1rem;
-      width: 100%;
-    }
-
-    h2.category-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      color: #34495e;
-      border-bottom: 3px solid #2980b9;
-      padding-bottom: 0.4rem;
-    }
-
-    .category {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem 2rem;
-      margin-bottom: 3.5rem;
+    .section-title {
+      font-size: 1.8rem;
+      color: #1e3d59;
+      margin: 3rem 0 1rem;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 6px;
+      text-align: center;
     }
 
     .card {
-      background: #ffffffcc;
       border-radius: 16px;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     }
 
     .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: contain;
-      background-color: #f9f9f9;
-      border-bottom: 1px solid #ddd;
+      height: 400px;
+      object-fit: cover;
     }
 
-    .card-content {
-      padding: 1.25rem 1.5rem 1.75rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .card-body {
+      position: relative;
     }
 
-    .card-content h3 {
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.04em;
+    .add-cart {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
     }
 
-    .card-content p {
-      flex-grow: 1;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      color: #555;
-      margin-bottom: 1rem;
+    .price-tag {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      font-weight: bold;
+      color: #00bcd4;
+      font-size: 1.25rem;
     }
 
-    .sizes {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
+    .navbar-brand img {
+      height: 3.5rem;
     }
 
-    .size-btn {
-      background-color: #2980b9;
+    .cart-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    #cartBadge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: red;
       color: white;
-      padding: 0.45rem 0.9rem;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      user-select: none;
-      transition: background-color 0.25s ease;
-      box-shadow: 0 2px 6px rgba(41, 128, 185, 0.4);
-    }
-
-    .size-btn:hover {
-      background-color: #1c5980;
-      box-shadow: 0 4px 12px rgba(28, 89, 128, 0.7);
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      h2.category-title {
-        font-size: 1.6rem;
-      }
-
-      .card-content h3 {
-        font-size: 1.1rem;
-      }
-
-      .card-content p {
-        font-size: 0.9rem;
-      }
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
     }
   </style>
 </head>
-<script>
-  function addToCart(itemName) {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(itemName);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`Added to cart: ${itemName}`);
-  }
-</script>
 
 <body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-3" href="index.html"><img src="images/logo.jpg" alt="Logo" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="shoes1.html">Shoes</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="sportswear1.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link text-dark" href="sale.html">Sale</a></li>
+        </ul>
+      </div>
+      <div class="dropdown me-4 position-relative">
+        <button class="btn p-0 border-0 bg-transparent dropdown-toggle" type="button" id="cartToggle"
+          data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
+          <img src="images/cart-icon.jpg" alt="Cart" class="cart-icon" />
+          <span id="cartBadge">0</span>
+        </button>
+        <div id="cartTotal" class="text-center" style="font-size: 0.8rem; margin-top: 4px; font-weight: 500;">₹0</div>
+        <ul class="dropdown-menu dropdown-menu-end p-3 mt-2" aria-labelledby="cartToggle" id="cartItems"
+          style="min-width: 270px;">
+          <li><em>Your cart is empty.</em></li>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
+            <strong id="dropdownTotal" style="font-size: 0.9rem;">₹0</strong>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <header>
-    <h1>Sportswear</h1>
-    <p>Discover your favorite IPL, Football, and Basketball jerseys with perfect fits and styles.</p>
+    <h1>Sportswear Collection</h1>
+    <p>Find jerseys and apparel that elevate your performance and style.</p>
   </header>
 
-  <main>
-    <section>
-      <h2 class="category-title">IPL Jerseys</h2>
-      <div class="category">
-        <article class="card">
-          <img src="images/csk.jpg" alt="Chennai Super Kings Jersey" />
-          <div class="card-content">
-            <h3>Chennai Super Kings</h3>
-            <p>Official yellow jersey of CSK, symbolizing champions and passion.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('Chennai Super Kings Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
+  <main class="container">
+    <h2 class="section-title">🏟️ Football Jerseys</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/barcelona.jpg" class="card-img-top" alt="Barcelona Kit">
+          <div class="card-body">
+            <h5 class="card-title">Nike Barcelona 24/25 Kit</h5>
+            <p class="card-text">Vibrant maroon & blue jersey. Lightweight, breathable and iconic design.</p>
+            <span class="price-tag">₹860</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Nike Barcelona Kit')">Add to Cart</button>
           </div>
-        </article>
-
-        <article class="card">
-          <img src="images/mi.jpg" alt="Mumbai Indians Jersey" />
-          <div class="card-content">
-            <h3>Mumbai Indians</h3>
-            <p>Bold blue jersey of the five-time IPL champions.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('Mumbai Indians Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
-    </section>
-
-    <section>
-      <h2 class="category-title">Football Jerseys</h2>
-      <div class="category">
-        <article class="card">
-          <img src="images/barcelona.jpg" alt="FC Barcelona Jersey" />
-          <div class="card-content">
-            <h3>FC Barcelona</h3>
-            <p>Iconic blue and red stripes, worn by legends.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('FC Barcelona Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/germany.jpg" class="card-img-top" alt="Germany Kit">
+          <div class="card-body">
+            <h5 class="card-title">Germany Away Kit 2024</h5>
+            <p class="card-text">Bold pink & purple design with classic 3-stripes. Premium fabric and fit.</p>
+            <br>
+            <span class="price-tag">₹860</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Germany Kit')">Add to Cart</button>
           </div>
-        </article>
-
-        <article class="card">
-          <img src="images/real_madrid.jpg" alt="Real Madrid Jersey" />
-          <div class="card-content">
-            <h3>Real Madrid</h3>
-            <p>Classic white kit of the most successful football club.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('Real Madrid Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
-    </section>
-
-    <section>
-      <h2 class="category-title">Basketball Jerseys</h2>
-      <div class="category">
-        <article class="card">
-          <img src="images/lakers.jpg" alt="LA Lakers Jersey" />
-          <div class="card-content">
-            <h3>LA Lakers</h3>
-            <p>Wear purple and gold with pride like Kobe and LeBron.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('LA Lakers Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/real_madrid.jpg" class="card-img-top" alt="Track Jacket">
+          <div class="card-body">
+            <h5 class="card-title">Real Madrid Home Jersey 2024</h5>
+            <p class="card-text">Iconic white with gold trim. Lightweight and match-ready.</p>
+            <br>
+            <span class="price-tag">₹1,199</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Real Madrid Home Jersey 2024')">Add to
+              Cart</button>
           </div>
-        </article>
-
-        <article class="card">
-          <img src="images/bulls.jpg" alt="Chicago Bulls Jersey" />
-          <div class="card-content">
-            <h3>Chicago Bulls</h3>
-            <p>The legendary red of Jordan’s Bulls dynasty.</p>
-            <div class="sizes">
-              <span class="size-btn">S</span>
-              <span class="size-btn">M</span>
-              <span class="size-btn">L</span>
-              <span class="size-btn">XL</span>
-              <span class="size-btn">XXL</span>
-              <button onclick="addToCart('Chicago Bulls Jersey')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
-            </div>
-          </div>
-        </article>
+        </div>
       </div>
-    </section>
+    </div>
+    <h2 class="section-title">🏏 IPL Jerseys</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/mi.jpg" class="card-img-top" alt="MI Jersey">
+          <div class="card-body">
+            <h5 class="card-title">Mumbai Indians Jersey 2025</h5>
+            <p class="card-text">Bold blue with golden accents. Dry-fit fabric.</p>
+            <span class="price-tag">₹899</span>
+            <br><br>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Mumbai Indians Jersey 2024')">Add to
+              Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/csk.jpg" class="card-img-top" alt="CSK Jersey">
+          <div class="card-body">
+            <h5 class="card-title">Chennai Super Kings Jersey 2025</h5>
+            <p class="card-text">Iconic yellow with blue trim. Breathable fabric.</p>
+            <span class="price-tag">₹899</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Chennai Super Kings Jersey 2024')">Add to
+              Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/rcb.jpg" class="card-img-top" alt="RCB Jersey">
+          <div class="card-body">
+            <h5 class="card-title">RCB Jersey 2025</h5>
+            <p class="card-text">Black and red combo. Official 2025 edition.</p>
+            <span class="price-tag">₹899</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('RCB Jersey 2024')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="section-title">🏀 Basketball Jerseys</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/bulls.jpg" class="card-img-top" alt="Chicago Bulls Jersey">
+          <div class="card-body">
+            <h5 class="card-title">Chicago Bulls Jersey</h5>
+            <p class="card-text">Iconic red & black. Lightweight mesh with official NBA branding.</p>
+            <span class="price-tag">₹999</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Chicago Bulls Jersey')">Add to Cart</button>
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/lakers.jpg" class="card-img-top" alt="LA Lakers Jersey">
+          <div class="card-body">
+            <h5 class="card-title">LA Lakers Jersey</h5>
+            <p class="card-text">Bold purple & gold with authentic stitched logos. A fan favorite.</p>
+            <span class="price-tag">₹999</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('LA Lakers Jersey')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="images/gsw.jpg" class="card-img-top" alt="Golden State Warriors Jersey">
+          <div class="card-body">
+            <h5 class="card-title">Golden State Warriors Jersey</h5>
+            <p class="card-text">Blue & yellow championship kit. Breathable and game-ready.</p>
+            <span class="price-tag">₹999</span>
+            <button class="btn btn-primary add-cart" onclick="addToCart('Warriors Jersey')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function addToCart(itemName) {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.push(itemName);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCart();
+    }
+    function clearCart() {
+      localStorage.removeItem("cart");
+      updateCart();
+    }
+    function updateCart() {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      let counts = {};
+      cart.forEach(item => { counts[item] = (counts[item] || 0) + 1; });
+      let list = Object.entries(counts).map(([name, count]) => `<li>${name} x${count}</li>`).join('');
+      document.getElementById("cartItems").innerHTML = list + `
+    <div class='d-flex justify-content-between align-items-center mt-2'>
+      <button class='btn btn-sm btn-outline-danger' onclick='clearCart()'>Clear Cart</button>
+      <strong id='dropdownTotal' style='font-size: 0.9rem;'>₹${cart.length * 860}</strong>
+    </div>`;
+      document.getElementById("cartBadge").textContent = cart.length;
+      document.getElementById("cartTotal").textContent = `₹${cart.length * 860}`;
+    }
+    document.addEventListener("DOMContentLoaded", updateCart);
+  </script>
+
 </body>
 
 </html>
