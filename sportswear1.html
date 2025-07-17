@@ -102,6 +102,10 @@
       font-size: 0.75rem;
       font-weight: bold;
     }
+
+    .cart-icon-container {
+      position: relative;
+    }
   </style>
 </head>
 
@@ -123,152 +127,143 @@
           <li class="nav-item"><a class="nav-link text-dark" href="sale.html">Sale</a></li>
         </ul>
       </div>
-      <div class="dropdown me-4 position-relative">
-        <button class="btn p-0 border-0 bg-transparent dropdown-toggle" type="button" id="cartToggle"
-          data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
+      <div class="cart-icon-container me-4">
+        <a href="cart.html">
           <img src="images/cart-icon.jpg" alt="Cart" class="cart-icon" />
           <span id="cartBadge">0</span>
-        </button>
-        <div id="cartTotal" class="text-center" style="font-size: 0.8rem; margin-top: 4px; font-weight: 500;">₹0</div>
-        <ul class="dropdown-menu dropdown-menu-end p-3 mt-2" aria-labelledby="cartToggle" id="cartItems"
-          style="min-width: 270px;">
-          <li><em>Your cart is empty.</em></li>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
-            <strong id="dropdownTotal" style="font-size: 0.9rem;">₹0</strong>
-          </div>
-        </ul>
+        </a>
       </div>
     </div>
   </nav>
 
-  <header>
-    <h1>Sportswear Collection</h1>
-    <p>Find jerseys and apparel that elevate your performance and style.</p>
-  </header>
-
   <main class="container">
-    <h2 class="section-title">🏟️ Football Jerseys</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/barcelona.jpg" class="card-img-top" alt="Barcelona Kit">
-          <div class="card-body">
-            <h5 class="card-title">Nike Barcelona 24/25 Kit</h5>
-            <p class="card-text">Vibrant maroon & blue jersey. Lightweight, breathable and iconic design.</p>
-            <span class="price-tag">₹860</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Nike Barcelona Kit')">Add to Cart</button>
+    <header>
+      <h1>Sportswear Collection</h1>
+      <p>Find jerseys and apparel that elevate your performance and style.</p>
+    </header>
+
+    <main class="container">
+      <h2 class="section-title">🏟️ Football Jerseys</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/barcelona.jpg" class="card-img-top" alt="Barcelona Kit">
+            <div class="card-body">
+              <h5 class="card-title">Nike Barcelona 24/25 Kit</h5>
+              <p class="card-text">Vibrant maroon & blue jersey. Lightweight, breathable and iconic design.</p>
+              <span class="price-tag">₹860</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Nike Barcelona Kit')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/germany.jpg" class="card-img-top" alt="Germany Kit">
+            <div class="card-body">
+              <h5 class="card-title">Germany Away Kit 2024</h5>
+              <p class="card-text">Bold pink & purple design with classic 3-stripes. Premium fabric and fit.</p>
+              <br>
+              <span class="price-tag">₹860</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Germany Kit')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/real_madrid.jpg" class="card-img-top" alt="Track Jacket">
+            <div class="card-body">
+              <h5 class="card-title">Real Madrid Home Jersey 2024</h5>
+              <p class="card-text">Iconic white with gold trim. Lightweight and match-ready.</p>
+              <br>
+              <span class="price-tag">₹1,199</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Real Madrid Home Jersey 2024')">Add to
+                Cart</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/germany.jpg" class="card-img-top" alt="Germany Kit">
-          <div class="card-body">
-            <h5 class="card-title">Germany Away Kit 2024</h5>
-            <p class="card-text">Bold pink & purple design with classic 3-stripes. Premium fabric and fit.</p>
-            <br>
-            <span class="price-tag">₹860</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Germany Kit')">Add to Cart</button>
+      <h2 class="section-title">🏏 IPL Jerseys</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/mi.jpg" class="card-img-top" alt="MI Jersey">
+            <div class="card-body">
+              <h5 class="card-title">Mumbai Indians Jersey 2025</h5>
+              <p class="card-text">Bold blue with golden accents. Dry-fit fabric.</p>
+              <span class="price-tag">₹899</span>
+              <br><br>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Mumbai Indians Jersey 2024')">Add to
+                Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/csk.jpg" class="card-img-top" alt="CSK Jersey">
+            <div class="card-body">
+              <h5 class="card-title">Chennai Super Kings Jersey 2025</h5>
+              <p class="card-text">Iconic yellow with blue trim. Breathable fabric.</p>
+              <span class="price-tag">₹899</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Chennai Super Kings Jersey 2024')">Add to
+                Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/rcb.jpg" class="card-img-top" alt="RCB Jersey">
+            <div class="card-body">
+              <h5 class="card-title">RCB Jersey 2025</h5>
+              <p class="card-text">Black and red combo. Official 2025 edition.</p>
+              <span class="price-tag">₹899</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('RCB Jersey 2024')">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/real_madrid.jpg" class="card-img-top" alt="Track Jacket">
-          <div class="card-body">
-            <h5 class="card-title">Real Madrid Home Jersey 2024</h5>
-            <p class="card-text">Iconic white with gold trim. Lightweight and match-ready.</p>
-            <br>
-            <span class="price-tag">₹1,199</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Real Madrid Home Jersey 2024')">Add to
-              Cart</button>
+      <h2 class="section-title">🏀 Basketball Jerseys</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/bulls.jpg" class="card-img-top" alt="Chicago Bulls Jersey">
+            <div class="card-body">
+              <h5 class="card-title">Chicago Bulls Jersey</h5>
+              <p class="card-text">Iconic red & black. Lightweight mesh with official NBA branding.</p>
+              <span class="price-tag">₹999</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Chicago Bulls Jersey')">Add to Cart</button>
+              <br>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <h2 class="section-title">🏏 IPL Jerseys</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/mi.jpg" class="card-img-top" alt="MI Jersey">
-          <div class="card-body">
-            <h5 class="card-title">Mumbai Indians Jersey 2025</h5>
-            <p class="card-text">Bold blue with golden accents. Dry-fit fabric.</p>
-            <span class="price-tag">₹899</span>
-            <br><br>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Mumbai Indians Jersey 2024')">Add to
-              Cart</button>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/lakers.jpg" class="card-img-top" alt="LA Lakers Jersey">
+            <div class="card-body">
+              <h5 class="card-title">LA Lakers Jersey</h5>
+              <p class="card-text">Bold purple & gold with authentic stitched logos. A fan favorite.</p>
+              <span class="price-tag">₹999</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('LA Lakers Jersey')">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/gsw.jpg" class="card-img-top" alt="Golden State Warriors Jersey">
+            <div class="card-body">
+              <h5 class="card-title">Golden State Warriors Jersey</h5>
+              <p class="card-text">Blue & yellow championship kit. Breathable and game-ready.</p>
+              <span class="price-tag">₹999</span>
+              <button class="btn btn-primary add-cart" onclick="addToCart('Warriors Jersey')">Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/csk.jpg" class="card-img-top" alt="CSK Jersey">
-          <div class="card-body">
-            <h5 class="card-title">Chennai Super Kings Jersey 2025</h5>
-            <p class="card-text">Iconic yellow with blue trim. Breathable fabric.</p>
-            <span class="price-tag">₹899</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Chennai Super Kings Jersey 2024')">Add to
-              Cart</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/rcb.jpg" class="card-img-top" alt="RCB Jersey">
-          <div class="card-body">
-            <h5 class="card-title">RCB Jersey 2025</h5>
-            <p class="card-text">Black and red combo. Official 2025 edition.</p>
-            <span class="price-tag">₹899</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('RCB Jersey 2024')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h2 class="section-title">🏀 Basketball Jerseys</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/bulls.jpg" class="card-img-top" alt="Chicago Bulls Jersey">
-          <div class="card-body">
-            <h5 class="card-title">Chicago Bulls Jersey</h5>
-            <p class="card-text">Iconic red & black. Lightweight mesh with official NBA branding.</p>
-            <span class="price-tag">₹999</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Chicago Bulls Jersey')">Add to Cart</button>
-            <br>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/lakers.jpg" class="card-img-top" alt="LA Lakers Jersey">
-          <div class="card-body">
-            <h5 class="card-title">LA Lakers Jersey</h5>
-            <p class="card-text">Bold purple & gold with authentic stitched logos. A fan favorite.</p>
-            <span class="price-tag">₹999</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('LA Lakers Jersey')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card h-100">
-          <img src="images/gsw.jpg" class="card-img-top" alt="Golden State Warriors Jersey">
-          <div class="card-body">
-            <h5 class="card-title">Golden State Warriors Jersey</h5>
-            <p class="card-text">Blue & yellow championship kit. Breathable and game-ready.</p>
-            <span class="price-tag">₹999</span>
-            <button class="btn btn-primary add-cart" onclick="addToCart('Warriors Jersey')">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </main>
+    </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -277,28 +272,16 @@
       cart.push(itemName);
       localStorage.setItem("cart", JSON.stringify(cart));
       alert(`Added to cart: ${itemName}`);
-      updateCart();
+      updateCartBadge();
     }
-    function clearCart() {
-      localStorage.removeItem("cart");
-      updateCart();
-    }
-    function updateCart() {
-      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      let counts = {};
-      cart.forEach(item => { counts[item] = (counts[item] || 0) + 1; });
-      let list = Object.entries(counts).map(([name, count]) => `<li>${name} x${count}</li>`).join('');
-      document.getElementById("cartItems").innerHTML = list + `
-    <div class='d-flex justify-content-between align-items-center mt-2'>
-      <button class='btn btn-sm btn-outline-danger' onclick='clearCart()'>Clear Cart</button>
-      <strong id='dropdownTotal' style='font-size: 0.9rem;'>₹${cart.length * 860}</strong>
-    </div>`;
-      document.getElementById("cartBadge").textContent = cart.length;
-      document.getElementById("cartTotal").textContent = `₹${cart.length * 860}`;
-    }
-    document.addEventListener("DOMContentLoaded", updateCart);
-  </script>
 
+    function updateCartBadge() {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      document.getElementById("cartBadge").textContent = cart.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
+  </script>
 </body>
 
 </html>
