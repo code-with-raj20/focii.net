@@ -5,41 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shoes - Sports, Casual & Formal</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #f9f9f9, #e0f7fa);
       color: #333;
       padding-bottom: 50px;
-    }
-
-    /* Navigation */
-    .cart-icon {
-      width: 40px;
-      height: 40px;
-      transition: transform 0.3s ease;
-    }
-
-    #cartBadge {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: red;
-      color: white;
-      border-radius: 50%;
-      padding: 2px 6px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      transition: scale 0.2s ease;
     }
 
     header {
@@ -50,35 +24,51 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+    .navbar {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
+    .navbar-brand img {
+      height: 40px;
     }
 
-    main {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+    .nav-link {
+      font-weight: 500;
+      color: #000 !important;
     }
 
-    h2 {
-      font-size: 1.8rem;
-      color: #1e3d59;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #00bcd4;
-      padding-bottom: 6px;
+    .nav-link:hover {
+      color: #0d6efd !important;
+    }
+
+    .cart-btn {
+      position: relative;
+      background: none;
+      border: none;
+    }
+
+    .cart-btn img {
+      width: 40px;
+      height: 40px;
+    }
+
+    #cartBadge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      padding: 2px 6px;
     }
 
     .category {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-bottom: 3rem;
+      margin: 2rem;
     }
 
     .card {
@@ -86,12 +76,6 @@
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     }
 
     .card img {
@@ -105,109 +89,101 @@
       padding: 1.2rem;
     }
 
-    .card-content h3 {
-      font-size: 1.3rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-content p {
-      font-size: 0.95rem;
-      color: #555;
-      line-height: 1.4;
-    }
-
-    .sizes {
-      margin-top: 0.75rem;
-    }
-
     .size-badge {
       display: inline-block;
       background: #00bcd4;
       color: #fff;
       padding: 4px 10px;
-      margin: 4px 4px 0 0;
+      margin: 4px 2px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 600;
-      transition: background 0.3s;
     }
 
-    .size-badge:hover {
-      background: #0097a7;
+    .flex-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
+    .price-tag {
+      font-weight: bold;
+      color: #388e3c;
+      font-size: 1rem;
+    }
 
-      .card-content h3 {
-        font-size: 1.1rem;
-      }
+    .add-cart-btn {
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .sizes-wrapper {
+      text-align: center;
+      flex: 1;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ✅ Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light position-relative mb-2">
-    <div class="container-fluid">
-      <a class="navbar-brand ms-3" href="#"><img src="images/logo.jpg" alt="Logo" style="height: 3.5rem;" /></a>
-
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="shoes1.html">Shoes</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="sportswear1.html">Sportswear</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="sale.html">Sale</a></li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.jpg" alt="Focii Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Shoes</a></li>
+          <li class="nav-item"><a class="nav-link" href="sportswear1.html">Sportswear</a></li>
+          <li class="nav-item"><a class="nav-link" href="sale.html">Sale</a></li>
         </ul>
-      </div>
-
-      <!-- Cart -->
-      <div class="dropdown me-4" style="position: absolute; top: 10px; right: 0; text-align: center;">
-        <button id="cartToggle" class="btn p-0 border-0 bg-transparent dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false" style="position: relative;">
-          <img src="images/cart-icon.jpg" alt="Cart" id="cartIcon" class="cart-icon" />
+        <button class="cart-btn" onclick="window.location.href='cart.html'">
+          <img src="images/cart-icon.jpg" alt="Cart" />
           <span id="cartBadge">0</span>
         </button>
-        <div id="cartTotal" style="font-size: 0.8rem; color: #212529; margin-top: 4px; font-weight: 500;">₹0</div>
-        <ul class="dropdown-menu dropdown-menu-end p-3" id="cartItems" style="min-width: 270px;">
-          <li><em>Your cart is empty.</em></li>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
-            <strong id="dropdownTotal" style="font-size: 0.9rem;">₹0</strong>
-          </div>
-        </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Page Header -->
   <header>
     <h1>Shoes</h1>
     <p>Find your perfect fit – explore sports, casual, and formal shoes.</p>
   </header>
 
+  <!-- Product Sections -->
   <main>
 
     <section>
       <h2>🏃 Sports Shoes</h2>
       <div class="category">
+
         <div class="card">
           <img src="images/sports1.jpg" alt="Running Shoes" />
           <div class="card-content">
             <h3>Running Shoes</h3>
             <p>Lightweight, breathable and flexible. Ideal for long-distance running and training.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Running Shoes')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹1200</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Running Shoes')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -217,38 +193,42 @@
           <div class="card-content">
             <h3>Training Shoes</h3>
             <p>Multi-purpose shoes for gym workouts, HIIT, and indoor sports. Soft sole with ankle support.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Training Shoes')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹1350</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Training Shoes')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <section>
       <h2>👟 Casual Shoes</h2>
       <div class="category">
+
         <div class="card">
           <img src="images/casual1.jpg" alt="Canvas Sneakers" />
           <div class="card-content">
             <h3>Canvas Sneakers</h3>
             <p>Classic low-top sneaker with vulcanized rubber sole. Great for everyday outfits and comfort.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Canvas Sneakers')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹990</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Canvas Sneakers')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -258,38 +238,42 @@
           <div class="card-content">
             <h3>Slip-on Loafers</h3>
             <p>Effortless style and comfort. Cushioned insole and breathable lining for all-day wear.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Slip-on Loafers')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹1100</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Slip-on Loafers')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <section>
       <h2>🥿 Formal Shoes</h2>
       <div class="category">
+
         <div class="card">
           <img src="images/formal1.jpg" alt="Oxford Shoes" />
           <div class="card-content">
             <h3>Oxford Shoes</h3>
             <p>Polished finish and closed lacing. The ultimate dress shoe for meetings, office or ceremonies.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Oxford Shoes')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹1490</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Oxford Shoes')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -299,92 +283,40 @@
           <div class="card-content">
             <h3>Derby Shoes</h3>
             <p>Open-lacing leather shoes with a rounded toe. Formal yet flexible enough for smart-casual looks.</p>
-            <div class="sizes">
-              <span class="size-badge">6</span>
-              <span class="size-badge">7</span>
-              <span class="size-badge">8</span>
-              <span class="size-badge">9</span>
-              <span class="size-badge">10</span>
-              <button onclick="addToCart('Derby Shoes')"
-                style="background:#2980b9; color:white; border:none; padding:8px 14px; border-radius:6px; margin-top:10px;">Add
-                to Cart</button>
+            <div class="flex-details">
+              <span class="price-tag">₹1400</span>
+              <div class="sizes-wrapper">
+                <span class="size-badge">6</span>
+                <span class="size-badge">7</span>
+                <span class="size-badge">8</span>
+                <span class="size-badge">9</span>
+                <span class="size-badge">10</span>
+              </div>
+              <button onclick="addToCart('Derby Shoes')" class="add-cart-btn">Add to Cart</button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
+
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    const priceMap = {
-      "Running Shoes": 1200,
-      "Training Shoes": 1100,
-      "Canvas Sneakers": 900,
-      "Slip-on Loafers": 950,
-      "Oxford Shoes": 1400,
-      "Derby Shoes": 1350
-    };
-
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      const cartItems = document.getElementById("cartItems");
-      const cartBadge = document.getElementById("cartBadge");
-      const cartTotal = document.getElementById("cartTotal");
-      const dropdownTotal = document.getElementById("dropdownTotal");
-
-      let total = 0;
-      const counts = {};
-      cart.forEach(item => {
-        counts[item] = (counts[item] || 0) + 1;
-        total += priceMap[item] || 0;
-      });
-
-      cartBadge.textContent = cart.length;
-      cartTotal.textContent = `₹${total}`;
-      dropdownTotal.textContent = `₹${total}`;
-
-      if (cart.length === 0) {
-        cartItems.innerHTML = "<li><em>Your cart is empty.</em></li>";
-        dropdownTotal.textContent = "₹0";
-        return;
-      }
-
-      const itemList = Object.entries(counts).map(([name, qty]) => `<li>${name} x${qty}</li>`).join("");
-      const dropdownButtons = `
-      <div class="d-flex justify-content-between align-items-center mt-2">
-        <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">Clear Cart</button>
-        <strong id="dropdownTotal" style="font-size: 0.9rem;">₹${total}</strong>
-      </div>
-    `;
-      cartItems.innerHTML = itemList + dropdownButtons;
-    }
-
-    function clearCart() {
-      localStorage.removeItem("cart");
-      renderCart();
-    }
-
     function addToCart(itemName) {
       let cart = JSON.parse(localStorage.getItem("cart") || "[]");
       cart.push(itemName);
       localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
       alert(`Added to cart: ${itemName}`);
-
-      const badge = document.getElementById("cartBadge");
-      badge.style.transform = "scale(1.4)";
-      setTimeout(() => {
-        badge.style.transform = "scale(1)";
-      }, 150);
-
-      renderCart();
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const icon = document.getElementById("cartIcon");
-      icon.addEventListener("mouseenter", () => icon.style.transform = "scale(1.15)");
-      icon.addEventListener("mouseleave", () => icon.style.transform = "scale(1)");
-      renderCart();
-    });
+    function updateCartBadge() {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      document.getElementById("cartBadge").textContent = cart.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
   </script>
 
 </body>
