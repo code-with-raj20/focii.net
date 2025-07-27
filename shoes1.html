@@ -157,7 +157,6 @@
 </head>
 
 <body>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
@@ -327,9 +326,9 @@
       let cart = JSON.parse(localStorage.getItem("cart") || "[]");
       cart.push(itemName);
       localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`Added to cart: ${itemName}`);
       updateCartBadge();
     }
-
     function updateCartBadge() {
       const cartBadge = document.getElementById("cartBadge");
       let cart = JSON.parse(localStorage.getItem("cart") || "[]");
