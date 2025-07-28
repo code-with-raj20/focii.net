@@ -12,19 +12,18 @@
 
   <style>
     body {
-      padding-top: 70px;
       background: linear-gradient(to right, #f8f9fa, #e9ecef);
       font-family: 'Segoe UI', sans-serif;
     }
 
-    .navbar {
-      position: fixed;
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    .navbar-brand img {
+      height: 3.5rem;
     }
 
-    .navbar-brand img {
-      height: 40px;
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
     }
 
     .nav-link {
@@ -138,9 +137,10 @@
         </ul>
       </div>
 
-      <a href="cart.html" class="position-relative">
+      <a href="cart.html" class="position-relative d-inline-block">
         <img src="images/cart-icon.jpg" alt="Cart" style="width: 32px;">
-        <span id="cartBadge" class="badge rounded-pill bg-danger">0</span>
+        <span id="cartBadge"
+          class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">0</span>
       </a>
     </div>
   </nav>
